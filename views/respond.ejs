@@ -1,0 +1,29 @@
+<%- include("partials/head.ejs"); %>
+<body>
+    <div class="container">
+        <%- include("partials/navbar.ejs"); %>
+        <hr>
+        <h1>Pergunta: </h1>
+        <h4><%= pergunta.titulo %></h4>
+        <p><%= pergunta.descricao %></p>
+        <hr>
+        <form action="/formularioResposta" method="post">
+            <label for="corpo">Responda: </label>
+            <textarea name="corpo" id="corpo" class="form-control" placeholder="Digite sua resposta aqui"></textarea>
+            <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+            <button type="submit"  class="btn btn-primary">Responder</button>
+        </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% resposta.forEach(resposta => { %>
+            <br>
+            <dic class="card">
+                <div class="card-body">
+                    <p><%= resposta.corpo %></p>
+                </div>
+            </dic>
+       <% }) %>
+    </div>    
+</body>
+<%- include("partials/footer.ejs"); %>
